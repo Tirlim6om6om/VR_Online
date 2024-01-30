@@ -1221,6 +1221,7 @@ GameObject:
   - component: {fileID: 4379950197647030740}
   - component: {fileID: 8128276806743361931}
   - component: {fileID: 8128276806743361932}
+  - component: {fileID: 8128276806743361933}
   m_Layer: 0
   m_Name: MagMachinegun
   m_TagString: Untagged
@@ -1373,7 +1374,7 @@ MonoBehaviour:
       _gripAlignTransformHandLeft: {fileID: 0}
       _gripAlignTransformHandRight: {fileID: 0}
     _snapMode: 3
-    _snapDirection: 1
+    _snapDirection: 0
     _snapReference: 1
     _avatarGripPoseEntries:
     - _avatarPrefabGuid: e7468ec6b7af89c4d94d451ec3c1807b
@@ -1440,11 +1441,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 431515203
-  ObjectInterest: 0
+  ObjectInterest: 1
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8128276806743361932}
+  - {fileID: 8128276806743361933}
 --- !u!114 &8128276806743361932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1467,6 +1469,18 @@ MonoBehaviour:
     Position: 0.01
     Rotation: 0.01
     Scale: 0.01
+--- !u!114 &8128276806743361933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6341843466163245010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e56d2ee7bc77a64880a0c1e559f4406, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8823157478758006140
 Transform:
   m_ObjectHideFlags: 0

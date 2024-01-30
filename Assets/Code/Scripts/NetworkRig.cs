@@ -73,7 +73,7 @@ public class NetworkRig : NetworkBehaviour
         if(avatarFinger.Distal != null) 
             avatarFinger.Distal.SetPositionAndRotation(finger.Distal.Pos, finger.Distal.Rot);
         if(avatarFinger.Intermediate != null)
-            avatarFinger.Distal.SetPositionAndRotation(finger.Intermediate.Pos, finger.Intermediate.Rot);
+            avatarFinger.Intermediate.SetPositionAndRotation(finger.Intermediate.Pos, finger.Intermediate.Rot);
         if(avatarFinger.Metacarpal != null)
             avatarFinger.Metacarpal.SetPositionAndRotation(finger.Metacarpal.Pos, finger.Metacarpal.Rot);
         if(avatarFinger.Proximal != null)
