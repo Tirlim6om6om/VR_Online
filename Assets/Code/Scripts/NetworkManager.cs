@@ -8,11 +8,9 @@ using UnityEngine.SceneManagement;
 
 public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 {
-    //creating a singleton
     public static NetworkManager Instance { get; private set; }
 
-    [SerializeField]
-    private GameObject _runnerPrefab;
+    [SerializeField] private GameObject _runnerPrefab;
 
     public NetworkRunner Runner { get; private set; }
 
@@ -21,7 +19,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
     {
         if (Instance != null && Instance != this)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
@@ -32,8 +30,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     private void Start()
     {
-        // fixing the server to a perticular region
-        //Fusion.Photon.Realtime.PhotonAppSettings.Global.AppSettings.FixedRegion = "er";
+        //Fusion.Photon.Realtime.PhotonAppSettings.Global.AppSettings.FixedRegion = "eu";
     }
 
     public async void CreateSession(string roomCode)
@@ -77,7 +74,7 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
         var scene = SceneRef.FromIndex(1);
         var sceneInfo = new NetworkSceneInfo();
         if (scene.IsValid) {
-            sceneInfo.AddSceneRef(scene, LoadSceneMode.Additive);
+            sceneInfo.AddSceneRef(scene, LoadSceneMode.Single);
         }
         var args = new StartGameArgs()
         {
@@ -93,12 +90,12 @@ public class NetworkManager : MonoBehaviour, INetworkRunnerCallbacks
 
     public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
     {
-        throw new NotImplementedException();
+        
     }
 
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)

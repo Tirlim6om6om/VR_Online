@@ -39,7 +39,8 @@ public class NetworkRig : NetworkBehaviour
         {
             UxrAvatarRig rig = avatar.AvatarRig;
             playerTransform.transform.SetPositionAndRotation(input.Player.Pos, input.Player.Rot);
-            rig.Head.Head.SetPositionAndRotation(input.Head.Pos, input.Head.Rot);
+            rig.Head.Head.SetPositionAndRotation(input.Head.HeadPos.Pos, input.Head.HeadPos.Rot);
+            rig.Head.Head.SetPositionAndRotation(input.Head.Neck.Pos, input.Head.Neck.Rot);
             rig.UpperChest.SetPositionAndRotation(input.UpperChest.Pos, input.UpperChest.Rot);
             rig.Chest.SetPositionAndRotation(input.Chest.Pos, input.Chest.Rot);
             rig.Hips.SetPositionAndRotation(input.Hips.Pos, input.Hips.Rot);
@@ -69,10 +70,14 @@ public class NetworkRig : NetworkBehaviour
 
     private void SetFingers(Finger finger, UxrAvatarFinger avatarFinger)
     {
-        avatarFinger.Distal.SetPositionAndRotation(finger.Distal.Pos, finger.Distal.Rot);
-        avatarFinger.Intermediate.SetPositionAndRotation(finger.Intermediate.Pos, finger.Intermediate.Rot);
-        avatarFinger.Metacarpal.SetPositionAndRotation(finger.Metacarpal.Pos, finger.Metacarpal.Rot);
-        avatarFinger.Proximal.SetPositionAndRotation(finger.Proximal.Pos, finger.Proximal.Rot);
+        if(avatarFinger.Distal != null) 
+            avatarFinger.Distal.SetPositionAndRotation(finger.Distal.Pos, finger.Distal.Rot);
+        if(avatarFinger.Intermediate != null)
+            avatarFinger.Distal.SetPositionAndRotation(finger.Intermediate.Pos, finger.Intermediate.Rot);
+        if(avatarFinger.Metacarpal != null)
+            avatarFinger.Metacarpal.SetPositionAndRotation(finger.Metacarpal.Pos, finger.Metacarpal.Rot);
+        if(avatarFinger.Proximal != null)
+            avatarFinger.Proximal.SetPositionAndRotation(finger.Proximal.Pos, finger.Proximal.Rot);
     }
 
     public override void Render()
@@ -86,7 +91,6 @@ public class NetworkRig : NetworkBehaviour
                 hardwareRig.playerTransform.rotation);
             //head
             SetPos(rigNet.Head.Head, rigLocal.Head.Head);
-            SetPos(rigNet.Head.Jaw, rigLocal.Head.Jaw);
             SetPos(rigNet.Head.Neck, rigLocal.Head.Neck);
             SetPos(rigNet.Head.LeftEye, rigLocal.Head.LeftEye);
             SetPos(rigNet.Head.RightEye, rigLocal.Head.RightEye);

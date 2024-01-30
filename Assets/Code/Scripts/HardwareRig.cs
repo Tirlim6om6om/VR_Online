@@ -10,6 +10,7 @@ using UltimateXR.Avatar.Rig;
 public class HardwareRig : MonoBehaviour, INetworkRunnerCallbacks
 {
     public Transform playerTransform;
+    public Transform head;
     public UxrAvatar avatar;
 
     void Start()
@@ -27,12 +28,15 @@ public class HardwareRig : MonoBehaviour, INetworkRunnerCallbacks
         
         xrRigState.Player = new PosInfo(playerTransform.position, playerTransform.rotation);
         xrRigState.UpperChest = new PosInfo(rig.UpperChest.position, rig.UpperChest.rotation);
-        xrRigState.Chest = new PosInfo(rig.Chest.position, rig.UpperChest.rotation);
+        xrRigState.Chest = new PosInfo(rig.Chest.position, rig.Chest.rotation);
         xrRigState.Spine = new PosInfo(rig.Spine.position, rig.Spine.rotation);
         xrRigState.Hips = new PosInfo(rig.Hips.position, rig.Hips.rotation);
         xrRigState.LeftArm = CreateArm(rig.LeftArm);
         xrRigState.RightArm = CreateArm(rig.RightArm);
-        xrRigState.Head = new PosInfo(rig.Head.Head.position, rig.Head.Head.rotation);
+
+        xrRigState.Head = new Head();
+        xrRigState.Head.HeadPos = new PosInfo(rig.Head.Head.position, rig.Head.Head.rotation);
+        xrRigState.Head.Neck = new PosInfo(rig.Head.Neck.position, rig.Head.Neck.rotation);
         
         input.Set(xrRigState);
         
@@ -183,15 +187,19 @@ public class HardwareRig : MonoBehaviour, INetworkRunnerCallbacks
 public struct RigState : INetworkInput
 {
     public PosInfo Player;
-    public PosInfo Head;
+    public Head Head;
     public PosInfo UpperChest;
     public PosInfo Chest;
     public PosInfo Spine;
     public PosInfo Hips;
     public Arm LeftArm;
     public Arm RightArm;
-    
-    
+}
+
+public struct Head : INetworkInput
+{
+    public PosInfo HeadPos;
+    public PosInfo Neck;
 }
 
 public struct Arm : INetworkInput
@@ -226,6 +234,8 @@ public struct PosInfo : INetworkInput
     public Vector3 Pos;
     public Quaternion Rot;
 
+    
+    
     public PosInfo(Vector3 pos, Quaternion rot)
     {
         Pos = pos;
