@@ -4,15 +4,18 @@
     "references": [
         "Unity.XR.OpenVR",
         "Unity.InputSystem",
-        "UnityEngine.SpatialTracking",
+        "GUID:ba171b3dd2a51234ab864770f99741a5",
         "Unity.RenderPipelines.Universal.Runtime",
-        "Unity.TextMeshPro",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
         "SteamVR",
-        "Oculus.VR",
+        "GUID:f64c9ebcd7899c3448a08dc9f9ddbe30",
         "Wave.Essence.CompositorLayer",
         "Unity.XR.PicoXR",
-        "Unity.XR.Oculus",
-        "MagicLeap.SDK"
+        "GUID:4af21795022437d4bb139a86514b9ff9",
+        "MagicLeap.SDK",
+        "GUID:ee448cb1442054024b3c982e54100a6a",
+        "GUID:3cc9de6c5b86c2d4fae7c9eb9e8af7fa",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
