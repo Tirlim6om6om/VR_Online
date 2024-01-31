@@ -603,7 +603,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 178983582}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
@@ -1929,7 +1929,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 792940025}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
@@ -2587,7 +2587,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 1051313674}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
@@ -3492,7 +3492,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 1413225326}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
@@ -4362,7 +4362,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 1902911021}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
@@ -5446,7 +5446,7 @@ MonoBehaviour:
   _translationResistance: 0
   _rotationResistance: 0
   _rigidBodySource: {fileID: 5825639424096023231}
-  _rigidBodyDynamicOnRelease: 0
+  _rigidBodyDynamicOnRelease: 1
   _verticalReleaseMultiplier: 1
   _horizontalReleaseMultiplier: 1
   _previewGrabPosesMode: 1
