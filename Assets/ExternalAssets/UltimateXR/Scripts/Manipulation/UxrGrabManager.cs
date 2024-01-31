@@ -6,6 +6,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Cysharp.Threading.Tasks;
+using Fusion;
+using Fusion.Addons.Physics;
+using Fusion.XR.Shared;
 using UltimateXR.Avatar;
 using UltimateXR.Core;
 using UltimateXR.Core.Components.Singleton;
@@ -623,9 +627,10 @@ namespace UltimateXR.Manipulation
 
             // Setup
 
-            if (grabbableObject.RigidBodySource != null)
+            if (grabbableObject.RigidBodySource != null &&  grabbableObject.TryGetComponent(out NetworkRigidbody3D rb))
             {
-                grabbableObject.RigidBodySource.isKinematic = true;
+                rb.Rigidbody.isKinematic = true;
+                rb.RBIsKinematic = true;
             }
 
             if (grabbableObject.UseParenting)
@@ -771,8 +776,21 @@ namespace UltimateXR.Manipulation
         /// <param name="grabbableObject">Object to grab</param>
         /// <param name="grabPoint">Grab point to grab the object from</param>
         /// <param name="propagateEvents">Whether to propagate events</param>
-        public void GrabObject(UxrGrabber grabber, UxrGrabbableObject grabbableObject, int grabPoint, bool propagateEvents)
+        public async void GrabObject(UxrGrabber grabber, UxrGrabbableObject grabbableObject, int grabPoint, bool propagateEvents)
         {
+            //TODO
+            if (grabbableObject.TryGetComponent(out NetworkObject networkObject))
+            {
+                await networkObject.WaitForStateAuthority();
+                Debug.Log("Get authority" + networkObject.HasStateAuthority);
+            }
+
+            // if (grabbableObject.TryGetComponent(out GrabbableNetwork grabbableNetwork))
+            // {
+            //     grabbableNetwork.OnGrabbed();
+            //     await UniTask.NextFrame();
+            // }
+            
             UxrGrabbableObjectAnchor anchorFrom = grabbableObject.CurrentAnchor;
 
             // Were we swapping hands, are we grabbing with both hands or is it a new grab?
@@ -894,9 +912,10 @@ namespace UltimateXR.Manipulation
 
             // If it is a dynamic object, make it kinematic while it is grabbed
 
-            if (grabber.GrabbedObject.RigidBodySource != null)
+            if (grabber.GrabbedObject.RigidBodySource != null && grabber.GrabbedObject.TryGetComponent(out NetworkRigidbody3D rb))
             {
-                grabber.GrabbedObject.RigidBodySource.isKinematic = true;
+                rb.RBIsKinematic = true;
+                rb.Rigidbody.isKinematic = true;
             }
 
             if (!grabber.GrabbedObject.IsConstrained)
@@ -1133,18 +1152,19 @@ namespace UltimateXR.Manipulation
                 }
             }
 
-            if (isMultiHands == false || grabber == null)
+            if (isMultiHands == false || grabber == null)//TODO
             {
                 _currentGrabs.Remove(grabbableObject);
 
-                if (grabbableObject.RigidBodySource != null)
+                if (grabbableObject.RigidBodySource != null && grabbableObject.TryGetComponent(out NetworkRigidbody3D rb))
                 {
-                    grabbableObject.RigidBodySource.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                    rb.RBIsKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                    rb.Rigidbody.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
 
                     if (releaseVelocity.IsValid())
                     {
-                        grabbableObject.RigidBodySource.AddForce(releaseVelocity, ForceMode.VelocityChange);
-                        grabbableObject.RigidBodySource.position += releaseVelocity * Time.deltaTime;
+                        rb.Rigidbody.AddForce(releaseVelocity, ForceMode.VelocityChange);
+                        rb.Rigidbody.position += releaseVelocity * Time.deltaTime;
                     }
 
                     if (releaseAngularVelocity.IsValid())
@@ -1192,6 +1212,11 @@ namespace UltimateXR.Manipulation
             {
                 grabInfo.RemoveGrabber(grabber);
             }
+            //TODO
+            if(grabbableObject.TryGetComponent(out NetworkObject networkObject))
+            {
+                //networkObject.ReleaseStateAuthority();
+            }
         }
 
         /// <summary>
@@ -1220,9 +1245,11 @@ namespace UltimateXR.Manipulation
 
             // Perform removal
 
-            if (grabbableObject.RigidBodySource != null && !IsBeingGrabbed(grabbableObject))
+            if (grabbableObject.RigidBodySource != null && !IsBeingGrabbed(grabbableObject) 
+                                                        && grabbableObject.TryGetComponent(out NetworkRigidbody3D rb))
             {
-                grabbableObject.RigidBodySource.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                rb.RBIsKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                rb.Rigidbody.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
             }
 
             if (grabbableObject.UseParenting)

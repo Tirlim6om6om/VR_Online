@@ -69,7 +69,6 @@ namespace UltimateXR.Avatar
     public partial class UxrAvatar : UxrComponent<UxrAvatar>, IUxrStateSync
     {
         #region Inspector Properties/Serialized Fields
-
         [SerializeField] private string                 _prefabGuid;
         [SerializeField] private GameObject             _parentPrefab;
         [SerializeField] private UxrAvatarMode          _avatarMode          = UxrAvatarMode.Local;

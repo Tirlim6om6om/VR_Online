@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Fusion;
 using UltimateXR.Animation.Interpolation;
 using UltimateXR.Avatar;
 using UltimateXR.Core;
@@ -1962,7 +1963,6 @@ namespace UltimateXR.Manipulation
                 for (int i = 0; i < GrabPointCount; ++i)
                 {
                     UxrGrabPointInfo grabPointInfo = GetGrabPoint(i);
-
                     if (grabPointInfo.RuntimeGrabs != null)
                     {
                         foreach (KeyValuePair<UxrGrabber, UxrRuntimeGripInfo> grabPairInfo in grabPointInfo.RuntimeGrabs)
