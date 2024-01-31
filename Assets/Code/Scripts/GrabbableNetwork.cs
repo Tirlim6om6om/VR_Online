@@ -34,10 +34,12 @@ public class GrabbableNetwork : NetworkBehaviour
     }
     
     
-    [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
+    [Rpc(RpcSources.All, RpcTargets.Proxies, HostMode = RpcHostMode.SourceIsServer)]
     private void RPCGrab(RpcInfo info = default)
     {
         print("Grab try!");
+        UxrGrabManager.Instance.ReleaseGrabs(_grabbable, false);
+        return;
         if (!info.IsInvokeLocal)
         {
             UxrGrabManager.Instance.ReleaseGrabs(_grabbable, false);
