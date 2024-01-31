@@ -459,7 +459,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 2817183999
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
@@ -567,7 +567,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &178983583
@@ -612,7 +612,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -656,7 +656,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 1100083662}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -1763,7 +1763,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
-  SyncParent: 0
+  SyncParent: 1
   _interpolationTarget: {fileID: 0}
   UsePreciseRotation: 0
   UseRenderSleepThresholds: 0
@@ -1785,7 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 1126970444
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
@@ -1893,7 +1893,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &792940026
@@ -1938,7 +1938,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -1982,7 +1982,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 899483908}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -2443,7 +2443,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 482279613
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
@@ -2551,7 +2551,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1051313675
@@ -2596,7 +2596,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -2640,7 +2640,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 2132922505}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -3326,7 +3326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
-  SyncParent: 0
+  SyncParent: 1
   _interpolationTarget: {fileID: 0}
   UsePreciseRotation: 0
   UseRenderSleepThresholds: 0
@@ -3348,7 +3348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 2281531601
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
@@ -3456,7 +3456,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1413225327
@@ -3501,7 +3501,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -3545,7 +3545,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 456435537}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -4196,7 +4196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SyncScale: 0
-  SyncParent: 0
+  SyncParent: 1
   _interpolationTarget: {fileID: 0}
   UsePreciseRotation: 0
   UseRenderSleepThresholds: 0
@@ -4218,7 +4218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 2918440034
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:
@@ -4326,7 +4326,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &1902911022
@@ -4371,7 +4371,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -4415,7 +4415,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 631362279}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -5270,7 +5270,7 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!114 &6238461213091799071
@@ -5455,7 +5455,7 @@ MonoBehaviour:
   _selectedAvatarForGrips: {fileID: 9064259894265353843, guid: e7468ec6b7af89c4d94d451ec3c1807b, type: 3}
   _firstGrabPointIsMain: 1
   _grabPoint:
-    _editorFoldout: 1
+    _editorFoldout: 0
     _editorName: 
     _grabMode: 0
     _useDefaultGrabButtons: 1
@@ -5499,7 +5499,7 @@ MonoBehaviour:
     _grabberProximityIndex: 0
     _enableOnHandNear: {fileID: 953400724}
   _additionalGrabPoints: []
-  _useParenting: 0
+  _useParenting: 1
   _autoCreateStartAnchor: 0
   _startAnchor: {fileID: 0}
   _tag: MagMachinegun
@@ -5537,7 +5537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SortKey: 431515203
-  ObjectInterest: 1
+  ObjectInterest: 0
   Flags: 524289
   NestedObjects: []
   NetworkedBehaviours:

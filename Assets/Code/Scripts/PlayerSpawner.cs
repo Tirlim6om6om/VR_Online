@@ -10,7 +10,7 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
     private NetworkPrefabRef playerPrefab;
 
     // Dictionary of spawned user prefabs, to destroy them on disconnection
-    private Dictionary<PlayerRef, NetworkObject> _spawnedUsers = new Dictionary<PlayerRef, NetworkObject>();
+    private readonly Dictionary<PlayerRef, NetworkObject> _spawnedUsers = new Dictionary<PlayerRef, NetworkObject>();
 
     void Start()
     {
@@ -18,25 +18,12 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
     }
 
     #region INetworkRunnerCallbacks
-
-    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
-    {
-        throw new NotImplementedException();
-    }
-
     public void OnPlayerJoined(NetworkRunner runner, PlayerRef player)
     {
         if (player == runner.LocalPlayer)
         {
             Vector3 spawnPosition = new Vector3(UnityEngine.Random.Range(1, 5), 0.5f, UnityEngine.Random.Range(1, 5));
-
             NetworkObject networkPlayerObject = runner.Spawn(playerPrefab, spawnPosition, Quaternion.identity, player);
-            // Keep track of the player avatars so we can remove it when they disconnect
             _spawnedUsers.Add(player, networkPlayerObject);
         }
     }
@@ -53,6 +40,15 @@ public class PlayerSpawner : MonoBehaviour, INetworkRunnerCallbacks
     #endregion
 
     #region Unsed INetworkRunnerCallbacks
+    public void OnObjectExitAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
+    {
+        
+    }
+
+    public void OnObjectEnterAOI(NetworkRunner runner, NetworkObject obj, PlayerRef player)
+    {
+        
+    }
     public void OnConnectedToServer(NetworkRunner runner)
     {
 
