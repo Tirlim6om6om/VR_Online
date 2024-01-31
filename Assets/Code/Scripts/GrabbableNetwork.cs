@@ -15,11 +15,30 @@ public class GrabbableNetwork : NetworkBehaviour
         TryGetComponent(out _grabbable);
         TryGetComponent(out _obj);
         _grabbable.Grabbed += OnGrabbed;
+        _grabbable.Released += OnThrow;
     }
 
     private void OnGrabbed(object sender, UxrManipulationEventArgs e)
     {
-        _obj.RequestStateAuthority();
+        //_obj.RequestStateAuthority();
+        RPCGrab();
+    }
+
+    private void OnThrow(object sender, UxrManipulationEventArgs e)
+    {
+        RPCRelease();
     }
     
+    
+    [Rpc(RpcSources.All, RpcTargets.Proxies, HostMode = RpcHostMode.SourceIsServer)]
+    public void RPCGrab(RpcInfo info = default)
+    {
+        UxrGrabManager.Instance.ReleaseGrabs(_grabbable, false);
+    }
+    
+    [Rpc(RpcSources.All, RpcTargets.Proxies, HostMode = RpcHostMode.SourceIsServer)]
+    public void RPCRelease(RpcInfo info = default)
+    {
+        
+    }
 }

@@ -12,7 +12,8 @@
         "Wave.Essence.CompositorLayer",
         "Unity.XR.PicoXR",
         "Unity.XR.Oculus",
-        "MagicLeap.SDK"
+        "MagicLeap.SDK",
+        "Fusion.Addons.Physics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

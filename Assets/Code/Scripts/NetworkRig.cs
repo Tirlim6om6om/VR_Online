@@ -15,6 +15,7 @@ public class NetworkRig : NetworkBehaviour
     private NetworkTransform playerTransform;
 
     [SerializeField] private UxrAvatar avatar;
+    [SerializeField] private UxrAvatarRig rig;
 
     private HardwareRig hardwareRig;
 
@@ -37,7 +38,6 @@ public class NetworkRig : NetworkBehaviour
 
         if (GetInput<RigState>(out var input))
         {
-            UxrAvatarRig rig = avatar.AvatarRig;
             playerTransform.transform.SetPositionAndRotation(input.Player.Pos, input.Player.Rot);
             rig.Head.Head.SetPositionAndRotation(input.Head.HeadPos.Pos, input.Head.HeadPos.Rot);
             rig.Head.Head.SetPositionAndRotation(input.Head.Neck.Pos, input.Head.Neck.Rot);
@@ -53,7 +53,7 @@ public class NetworkRig : NetworkBehaviour
     private void SetArm(Arm arm, UxrAvatarArm avatarArm)
     {
         avatarArm.Clavicle.SetPositionAndRotation(arm.Clavicle.Pos, arm.Clavicle.Rot);
-        avatarArm.Forearm.SetPositionAndRotation(arm.Clavicle.Pos, arm.Clavicle.Rot);
+        avatarArm.Forearm.SetPositionAndRotation(arm.Forearm.Pos, arm.Forearm.Rot);
         avatarArm.UpperArm.SetPositionAndRotation(arm.UpperArm.Pos, arm.UpperArm.Rot);
         SetHand(arm.Hand, avatarArm.Hand);
     }
@@ -85,25 +85,24 @@ public class NetworkRig : NetworkBehaviour
         base.Render();
         if (IsLocalNetworkRig)
         {
-            UxrAvatarRig rigNet = avatar.AvatarRig;
             UxrAvatarRig rigLocal = hardwareRig.avatar.AvatarRig;
             playerTransform.transform.SetPositionAndRotation(hardwareRig.playerTransform.position,
                 hardwareRig.playerTransform.rotation);
             //head
-            SetPos(rigNet.Head.Head, rigLocal.Head.Head);
-            SetPos(rigNet.Head.Neck, rigLocal.Head.Neck);
-            SetPos(rigNet.Head.LeftEye, rigLocal.Head.LeftEye);
-            SetPos(rigNet.Head.RightEye, rigLocal.Head.RightEye);
+            SetPos(rig.Head.Head, rigLocal.Head.Head);
+            SetPos(rig.Head.Neck, rigLocal.Head.Neck);
+            SetPos(rig.Head.LeftEye, rigLocal.Head.LeftEye);
+            SetPos(rig.Head.RightEye, rigLocal.Head.RightEye);
 
             //Chest
-            SetPos(rigNet.UpperChest, rigLocal.UpperChest);
-            SetPos(rigNet.Chest, rigLocal.Chest);
-            SetPos(rigNet.Hips, rigLocal.Hips);
-            SetPos(rigNet.Spine, rigLocal.Spine);
+            SetPos(rig.UpperChest, rigLocal.UpperChest);
+            SetPos(rig.Chest, rigLocal.Chest);
+            SetPos(rig.Hips, rigLocal.Hips);
+            SetPos(rig.Spine, rigLocal.Spine);
             
             //Arms
-            SetArm(rigNet.LeftArm, rigLocal.LeftArm);
-            SetArm(rigNet.RightArm, rigLocal.RightArm);
+            SetArm(rig.LeftArm, rigLocal.LeftArm);
+            SetArm(rig.RightArm, rigLocal.RightArm);
         }
     }
     
