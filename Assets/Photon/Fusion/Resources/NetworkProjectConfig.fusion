@@ -60,10 +60,11 @@
         "Fusion.Unity",
         "Assembly-CSharp",
         "Assembly-CSharp-firstpass",
-        "Fusion.Addons.Physics"
+        "Fusion.Addons.Physics",
+        "UltimateXR"
     ],
     "UseSerializableDictionary": true,
     "NullChecksForNetworkedProperties": true,
-    "CheckRpcAttributeUsage": false,
+    "CheckRpcAttributeUsage": true,
     "CheckNetworkedPropertiesBeingEmpty": false
 }

@@ -10,17 +10,21 @@ public class GrabbableNetwork : NetworkBehaviour
     private UxrGrabbableObject _grabbable;
     private NetworkObject _obj;
     
-    private void Start()
+    public override void Spawned()
     {
+        base.Spawned();
         TryGetComponent(out _grabbable);
         TryGetComponent(out _obj);
         _grabbable.Grabbed += OnGrabbed;
-        _grabbable.Released += OnThrow;
     }
 
     private void OnGrabbed(object sender, UxrManipulationEventArgs e)
     {
-        //_obj.RequestStateAuthority();
+        RPCGrab();
+    }
+
+    public void OnGrabbed()
+    {
         RPCGrab();
     }
 
@@ -30,10 +34,19 @@ public class GrabbableNetwork : NetworkBehaviour
     }
     
     
-    [Rpc(RpcSources.All, RpcTargets.Proxies, HostMode = RpcHostMode.SourceIsServer)]
-    public void RPCGrab(RpcInfo info = default)
+    [Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
+    private void RPCGrab(RpcInfo info = default)
     {
-        UxrGrabManager.Instance.ReleaseGrabs(_grabbable, false);
+        print("Grab try!");
+        if (!info.IsInvokeLocal)
+        {
+            UxrGrabManager.Instance.ReleaseGrabs(_grabbable, false);
+            Debug.Log("Release");
+        }
+        else
+        {
+            Debug.Log("Take!");
+        }
     }
     
     [Rpc(RpcSources.All, RpcTargets.Proxies, HostMode = RpcHostMode.SourceIsServer)]
