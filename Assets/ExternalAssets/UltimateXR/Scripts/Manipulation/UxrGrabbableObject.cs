@@ -695,6 +695,8 @@ namespace UltimateXR.Manipulation
             }
         }
 
+        public event EventHandler<UxrManipulationEventArgs> GrabbingNetwork;
+        
         /// <inheritdoc />
         public event EventHandler<UxrManipulationEventArgs> Grabbing;
 
@@ -2047,6 +2049,11 @@ namespace UltimateXR.Manipulation
             ConstraintsFinished?.Invoke(this, e);
         }
 
+        internal void RaiseNetGrabbingEvent(UxrManipulationEventArgs e)
+        {
+            GrabbingNetwork?.Invoke(this, e);
+        }
+        
         /// <summary>
         ///     Event trigger for <see cref="Grabbing" />.
         /// </summary>

@@ -801,7 +801,8 @@ namespace UltimateXR.Manipulation
             UxrGrabber               releasingGrabber             = null;
             RuntimeGrabInfo          grabInfo                     = null;
             UxrManipulationEventArgs manipulationReleaseEventArgs = null;
-
+            grabbableObject.RaiseNetGrabbingEvent(manipulationReleaseEventArgs);
+            
             foreach (UxrGrabber otherGrabberCandidate in UxrGrabber.EnabledComponents)
             {
                 if (otherGrabberCandidate != grabber && otherGrabberCandidate.GrabbedObject == grabbableObject)
@@ -1169,7 +1170,7 @@ namespace UltimateXR.Manipulation
 
                     if (releaseAngularVelocity.IsValid())
                     {
-                        grabbableObject.RigidBodySource.AddTorque(releaseAngularVelocity, ForceMode.VelocityChange);
+                        rb.Rigidbody.AddTorque(releaseAngularVelocity, ForceMode.VelocityChange);
                     }
                 }
 
