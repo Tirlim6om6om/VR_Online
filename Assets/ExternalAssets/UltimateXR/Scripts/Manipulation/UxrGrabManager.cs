@@ -783,6 +783,7 @@ namespace UltimateXR.Manipulation
             {
                 await networkObject.WaitForStateAuthority();
                 Debug.Log("Get authority" + networkObject.HasStateAuthority);
+                await UniTask.NextFrame();
             }
 
             // if (grabbableObject.TryGetComponent(out GrabbableNetwork grabbableNetwork))
@@ -801,7 +802,9 @@ namespace UltimateXR.Manipulation
             UxrGrabber               releasingGrabber             = null;
             RuntimeGrabInfo          grabInfo                     = null;
             UxrManipulationEventArgs manipulationReleaseEventArgs = null;
-
+            grabbableObject.RaiseNetGrabbingEvent(manipulationReleaseEventArgs);
+            await UniTask.NextFrame();
+            
             foreach (UxrGrabber otherGrabberCandidate in UxrGrabber.EnabledComponents)
             {
                 if (otherGrabberCandidate != grabber && otherGrabberCandidate.GrabbedObject == grabbableObject)
@@ -1158,8 +1161,8 @@ namespace UltimateXR.Manipulation
 
                 if (grabbableObject.RigidBodySource != null && grabbableObject.TryGetComponent(out NetworkRigidbody3D rb))
                 {
-                    rb.RBIsKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
-                    rb.Rigidbody.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                    rb.RBIsKinematic = false;
+                    rb.Rigidbody.isKinematic = false;
 
                     if (releaseVelocity.IsValid())
                     {
@@ -1169,7 +1172,7 @@ namespace UltimateXR.Manipulation
 
                     if (releaseAngularVelocity.IsValid())
                     {
-                        grabbableObject.RigidBodySource.AddTorque(releaseAngularVelocity, ForceMode.VelocityChange);
+                        rb.Rigidbody.AddTorque(releaseAngularVelocity, ForceMode.VelocityChange);
                     }
                 }
 
@@ -1248,8 +1251,8 @@ namespace UltimateXR.Manipulation
             if (grabbableObject.RigidBodySource != null && !IsBeingGrabbed(grabbableObject) 
                                                         && grabbableObject.TryGetComponent(out NetworkRigidbody3D rb))
             {
-                rb.RBIsKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
-                rb.Rigidbody.isKinematic = !grabbableObject.RigidBodyDynamicOnRelease;
+                rb.RBIsKinematic = true;
+                rb.Rigidbody.isKinematic = true;
             }
 
             if (grabbableObject.UseParenting)
