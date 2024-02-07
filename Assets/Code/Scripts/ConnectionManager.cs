@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -16,5 +17,15 @@ namespace Code.Scripts
         {
             NetworkManager.Instance.JoinSession(inputField.text);
         }
+
+#if UNITY_EDITOR
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                CreateRoom();
+            }
+        }
+#endif
     }
 }
