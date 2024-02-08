@@ -25,7 +25,7 @@ namespace Code.Scripts
         //[Rpc(RpcSources.All, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
         private void KicK(Vector3 direction)
         {
-            _rb.Rigidbody.AddForce(direction * 100, ForceMode.Impulse);
+            _rb.Rigidbody.AddForce(direction, ForceMode.Impulse);
         }
     }
 }
